@@ -9,7 +9,7 @@ import tacos.entities.Ingredient;
 import tacos.repositories.IngredientRepository;
 
 @Service
-public class IngredientServiceimp implements IngredientService {
+public class IngredientServiceImp implements IngredientService {
 	
 	@Autowired
 	IngredientRepository ingredientRepository;

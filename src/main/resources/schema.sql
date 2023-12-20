@@ -10,3 +10,19 @@ CREATE TABLE IF NOT EXISTS ingredients (
     type varchar(25) NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS tacos (
+    id bigint  NOT NULL,
+    name varchar(50) NOT NULL,
+    createdAt date NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS tacos_ingredients (
+    id bigint NOT NULL AUTO_INCREMENT,
+    taco_id bigint NOT NULL,
+    ingredient_id bigint NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (taco_id) REFERENCES tacos(id),
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);

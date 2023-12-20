@@ -23,8 +23,7 @@ public class Ingredient {
 		this.setType(null);
 	}
 
-	public Ingredient(Long id, String name, Type type) {
-		this.id = id;
+	public Ingredient(String name, Type type) {
 		this.name = name;
 		this.type = type;
 	}
