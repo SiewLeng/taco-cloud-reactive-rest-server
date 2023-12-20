@@ -3,3 +3,10 @@ CREATE TABLE IF NOT EXISTS countries (
     name varchar(25) NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS ingredients (
+    id bigint NOT NULL AUTO_INCREMENT,
+    name varchar(50) NOT NULL,
+    type varchar(25) NOT NULL,
+    PRIMARY KEY (id)
+);

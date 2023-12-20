@@ -11,7 +11,7 @@ import io.r2dbc.spi.ConnectionFactory;
 
 @SpringBootApplication
 public class TacoCloudReactiveRestServerApplication {
-	
+
 	@Bean
 	ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
 		ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
@@ -25,5 +25,5 @@ public class TacoCloudReactiveRestServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TacoCloudReactiveRestServerApplication.class, args);
 	}
-
+	
 }
