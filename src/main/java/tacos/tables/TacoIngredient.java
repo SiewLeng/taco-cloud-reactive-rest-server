@@ -1,4 +1,4 @@
-package tacos.entities;
+package tacos.tables;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
@@ -8,25 +8,21 @@ public class TacoIngredient {
 	
 	@Id
 	private Long id;
+	
 	private Long taco_id;
+	
 	private Long ingredient_id;
 	
 	public TacoIngredient() {
+		this.id = null;
 		this.taco_id = null;
 		this.ingredient_id = null;
 	}
 	
 	public TacoIngredient(Long tacoId, Long ingredientId) {
+		this.id = null;
 		this.taco_id = tacoId;
 		this.ingredient_id = ingredientId;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
 	}
 	
 	public Long getTacoId() {

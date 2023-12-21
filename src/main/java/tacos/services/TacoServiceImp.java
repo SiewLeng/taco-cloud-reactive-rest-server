@@ -1,33 +1,35 @@
 package tacos.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import tacos.entities.Taco;
-import tacos.entities.TacoIngredient;
+import tacos.datas.TacoDto;
 import tacos.repositories.TacoIngredientRepository;
 import tacos.repositories.TacoRepository;
+import tacos.tables.Taco;
+import tacos.tables.TacoIngredient;
 
 @Service
 public class TacoServiceImp implements TacoService {
 	
 	@Autowired 
 	TacoRepository tacoRepository;
+	
+	@Autowired 
 	TacoIngredientRepository tacoIngredientRepository;
 	
 	@Override
-	public Mono<Taco> saveTaco(Long id, String name, List<Long> ingredientIds) {
-		Mono<Taco> taco = tacoRepository.save(new Taco(id, name));
-		List<TacoIngredient> tacoIngredients = new ArrayList<TacoIngredient>();
-		for (Long item: ingredientIds) {
-			tacoIngredients.add(new TacoIngredient(id, item));
-		}
-		tacoIngredientRepository.saveAll(tacoIngredients);
-		return taco;
+	public Mono<Taco> saveTaco(TacoDto tacoDto) {
+		tacoRepository.save(new Taco(tacoDto.getName()))
+		.map(taco -> taco.getId())
+		.map(tacoId -> {
+			for (Long ingredientId : tacoDto.getIngredientIds()) {
+				tacoIngredientRepository.save(new TacoIngredient(tacoId, ingredientId)).subscribe();
+			}  
+			return tacoId;
+		}).subscribe();
+		return Mono.just(new Taco(tacoDto.getName()));
 	}
-
 }

@@ -2,7 +2,7 @@ package tacos.services;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import tacos.entities.Ingredient;
+import tacos.tables.Ingredient;
 
 public interface IngredientService {
 	

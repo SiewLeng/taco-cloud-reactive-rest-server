@@ -4,7 +4,7 @@ import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import reactor.core.publisher.Mono;
-import tacos.entities.Taco;
+import tacos.tables.Taco;
 
 @Repository
 public interface TacoRepository extends R2dbcRepository<Taco, Long> {

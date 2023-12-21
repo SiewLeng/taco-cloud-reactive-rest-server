@@ -1,12 +1,11 @@
 package tacos.services;
 
-import java.util.List;
-
 import reactor.core.publisher.Mono;
-import tacos.entities.Taco;
+import tacos.datas.TacoDto;
+import tacos.tables.Taco;
 
 public interface TacoService {
 	
-	public Mono<Taco> saveTaco(Long id, String name, List<Long> ingredientIds);
+	public Mono<Taco> saveTaco(TacoDto tacoDto);
 	
 }

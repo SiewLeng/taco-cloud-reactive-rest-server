@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import tacos.entities.Ingredient;
 import tacos.services.IngredientService;
+import tacos.tables.Ingredient;
 
 @RestController
 @RequestMapping(path="/api/ingredients", consumes="application/json", produces="application/json")
